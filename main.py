@@ -12,7 +12,7 @@ def main(arg_list=None):
     parser = argparse.ArgumentParser(description='Run MOLLM with a configuration file')
     
     # Add an argument for the configuration file path
-    parser.add_argument('config', type=str, default='/home/v-nianran/src/MOLLM/config/chem/filter_logs_red_sa_sim.yaml',  help='Path to the configuration file (YAML format)')
+    parser.add_argument('config', type=str, default='/home/src/MOLLM/config/chem/filter_logs_red_sa_sim.yaml',  help='Path to the configuration file (YAML format)')
     parser.add_argument('--resume', action='store_true', help='resume training from the last checkpoint')
     parser.add_argument('--eval', action='store_true', help='evaluate this results according to the yaml file')
     parser.add_argument('--seed', type=int, default=42, help='random seed')

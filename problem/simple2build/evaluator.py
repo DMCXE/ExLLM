@@ -104,7 +104,7 @@ class RewardingSystem:
         return valid_items, log_dict
 
 def generate_initial_population(config,seed=42,n_sample=100):
-    with open('/root/nian/MOLLM/problem/simple2build/init_items.pkl','rb') as f:
+    with open('/root/MOLLM/problem/simple2build/init_items.pkl','rb') as f:
         items = pickle.load(f)
     reward_system = RewardingSystem(config)
     for i in range(len(items)):
@@ -160,7 +160,7 @@ def get_database(config,seed=42,n_sample=100):
     df['feasibility'] = feasibilities
     df = df.sort_values('feasibility',ascending=True).reset_index(drop=True)
     '''
-    df = pd.read_csv('/root/nian/MOLLM/problem/simple2build/simple2build_databse.csv')
+    df = pd.read_csv('/root/MOLLM/problem/simple2build/simple2build_databse.csv')
     df= df[:n_sample]
     items = []
     for _,row in df.iterrows():
