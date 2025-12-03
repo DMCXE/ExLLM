@@ -9,14 +9,19 @@ This repository contains the source code and scripts for the ExLLM project. The 
 │ ├── base.py <br>
 │ ├── MOO.py <br>
 │ └──  PromptTemplate.py <br>
+├── model <br>
+│ ├── LLM.py <br>
+│ ├── MOLLM.py <br>
+│ └── util.py <br>
 ├── data <br>
 │ ├── data_goal5.json <br>
 │ └── zinc.tab <br>
 ├── problem <br>
 │ ├── molecules <br>
 │ │ ├── evaluator.py <br>
-│ │ ├── goal5_gemini.yaml <br>
-│ │ └── molecule.yaml <br>
+│ │ ├── config.yaml <br>
+│ │ └── prompt_info.yaml <br>
+| | ...
 ├── eval.py <br>
 ├── main.py <br>
 └── test.ipynb <br>
