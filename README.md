@@ -2,29 +2,27 @@
 ![Welcome!](images/chaiopt_trans.png)
 This repository contains the source code and scripts for the ExLLM project. The project is organized as follows:
 
-# Results
-<table>
-  <tr>
-    <td align="center">
-      <img src="images/pmo.png" width="360" alt="PMO results"><br>
-      <sub><b>Practical Molecular Optimization (PMO)</b><br/>Total score on PMO benchmark.</sub>
-    </td>
-    <td align="center">
-      <img src="images/mocvrp.png" width="360" alt="Routing results"><br>
-      <sub><b>Multi-objective routing</b><br/>MOTSP &amp; MOCVRP benchmark performance.</sub>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="images/offshore.png" width="360" alt="Offshore jacket results"><br>
-      <sub><b>Offshore jacket design</b><br/>Weight minimisation under stress constraints.</sub>
-    </td>
-    <td align="center">
-      <img src="images/constellaration.png" width="360" alt="Constellation / stellarator results"><br>
-      <sub><b>Physical design task</b><br/>Performance on complex physics-inspired design.</sub>
-    </td>
-  </tr>
-</table>
+## Results
+ExLLM serves as a general LLM-as-optimizer framework and achieves strong performance across 7 heterogeneous domains:
+### Results
+
+#### **Practical Molecular Optimization (PMO)**
+<img src="images/pmo.png" width="600">
+
+---
+
+#### **Classical Multi-objective Routing (MOTSP / MOCVRP)**
+<img src="images/mocvrp.png" width="600">
+
+---
+
+#### **Offshore Platform Jacket Structural Optimization**
+<img src="images/offshore.png" width="600">
+
+---
+
+#### **Stellarator Design, Constellation Benchmark**
+<img src="images/constellaration.png" width="600">
 
 
 ### Running the experiments
