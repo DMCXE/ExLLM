@@ -36,6 +36,8 @@ Also 2nd place in Molecular Generation Challenge 2025 hosted by Sinopec.
 #### **GCU kernel optimization**
 Tencent Kaiwu AI competition 2025 (GCU track), Second prize.
 
+#### **Peptide Design**
+
 
 
 
