@@ -13,7 +13,6 @@ from algorithm.base import ItemFactory,HistoryBuffer
 from openai import AzureOpenAI
 from rdkit import Chem
 import json
-from eval import get_evaluation
 import time
 from model.util import *
 from algorithm import PromptTemplate

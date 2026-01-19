@@ -28,8 +28,19 @@ def evaluate_surface(r_cos,z_sin):
                                                   z_cos=None,
                                                   n_field_periods=3,  
                                                   is_stellarator_symmetric=True)
-    result,metrics = problems.SimpleToBuildQIStellarator().evaluate(surface,return_metrics=True)
-    return result,metrics
+    problem = problems.SimpleToBuildQIStellarator()
+    try:
+        result, metrics = problem.evaluate(surface, return_metrics=True)
+    except TypeError:
+        result = problem.evaluate(surface)
+        requires_qi = bool(getattr(problem, "_does_it_require_qi", False))
+        settings = (
+            forward_model.ConstellarationSettings.default_high_fidelity()
+            if requires_qi
+            else forward_model.ConstellarationSettings.default_high_fidelity_skip_qi()
+        )
+        metrics, _ = forward_model.forward_model(surface, settings=settings)
+    return result, metrics
 
 def _evaluate_one_static(item):
     try:
@@ -79,11 +90,11 @@ class RewardingSystem:
     def __init__(self, config=None):
         self.config = config
 
-    def evaluate(self, items):
+    def evaluate(self, items, mol_buffer=None):
         valid_items = []
         log_dict = {}
         finished = 0
-        cpu_count = 10
+        cpu_count = 4
         print(f'start evaluating')
         with ProcessPoolExecutor(max_workers=cpu_count) as executor:
             futures = {executor.submit(_evaluate_one_static, item): item for item in items}
@@ -104,10 +115,11 @@ class RewardingSystem:
         return valid_items, log_dict
 
 def generate_initial_population(config,seed=42,n_sample=100):
-    with open('/root/MOLLM/problem/simple2build/init_items.pkl','rb') as f:
+    with open('problem/simple2build/init_items_4.pkl','rb') as f:
         items = pickle.load(f)
     reward_system = RewardingSystem(config)
     for i in range(len(items)):
+    # for i in range(4):
         items[i].property_list = ['l_delta_b', 'feasibility']
     items, _ = reward_system.evaluate(items)
     return items
@@ -160,7 +172,7 @@ def get_database(config,seed=42,n_sample=100):
     df['feasibility'] = feasibilities
     df = df.sort_values('feasibility',ascending=True).reset_index(drop=True)
     '''
-    df = pd.read_csv('/root/MOLLM/problem/simple2build/simple2build_databse.csv')
+    df = pd.read_csv('problem/simple2build/simple2build_databse.csv')
     df= df[:n_sample]
     items = []
     for _,row in df.iterrows():

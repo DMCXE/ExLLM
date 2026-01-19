@@ -3,3 +3,4 @@ __pycache__/
 .ipynb_checkpoints/
 genetic_gfn/multi_objective/data/docked_mols.h5 
 genetic_gfn/multi_objective/oracle/
+results/

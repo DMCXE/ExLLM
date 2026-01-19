@@ -4,7 +4,6 @@ from model.LLM import LLM
 import os
 import pickle
 from algorithm.MOO import MOO
-from eval import eval_mo_results,mean_sr
 import pandas as pd
 import importlib
 class ConfigLoader:
@@ -100,6 +99,7 @@ class MOLLM:
         print(r)
 
     def evaluate(self):
+        from eval import eval_mo_results, mean_sr
         obj = {
             'init_pops':self.init_pops,
             'final_pops':self.final_pops,

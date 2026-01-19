@@ -103,14 +103,16 @@ class LLM:
             return self._init_deepseek()
 
     def _init_deepseek(self):
-        client = OpenAI(api_key="", base_url="https://api.deepseek.com")
+        api_key = os.getenv("DEEPSEEK_API_KEY")
+        client = OpenAI(api_key=api_key, base_url="https://api.deepseek.com")
         return client
     
     def deepseek_chat(self,content):
         response = self.model.chat.completions.create(
             model="deepseek-chat",
             messages=[
-                {"role": "system", "content": "You are a helpful chemist and biologist"},
+                # {"role": "system", "content": "You are a helpful chemist and biologist"},
+                {"role": "system", "content": "You are a helpful assistant who can propose novel and powerful molecules based on your domain knowledge."},
                 {"role": "user", "content": content},
             ],
             stream=False
